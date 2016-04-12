@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="stylesheet" type="text/css" href='styles.css'>
+  <link rel="stylesheet" type="text/css" href='game.css'>
   <link href="http://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Muli:300,400" rel="stylesheet" type="text/css">
   <link href="http://docs.justinav.info/cfbc.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script type='text/javascript' src='game.js'></script>
 </head>
 
 <header class="lv-bg">
@@ -23,7 +25,7 @@
     <% 15.times do |i| %>
       <tr>
         <% 15.times do |o| %>
-          <%= "<td id=#{i + 1}_#{o + 1}></td>" %>
+          <%= "<td id=#{i + 1},#{o + 1}></td>" %>
         <% end %>
       </tr>
     <% end %>
