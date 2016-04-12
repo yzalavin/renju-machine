@@ -17,15 +17,15 @@
 
 <header class="lv-bg">
   <h1 class="site-title">Renju</h1>
-  <p>and how to teach a machine</p>
+  <p>how to teach a machine</p>
 </header>
 
 <div class="container-fluid inner">
   <table class="tableizer-table">
-    <% 15.times do |i| %>
+    <% grid_size.times do |i| %>
       <tr>
-        <% 15.times do |o| %>
-          <%= "<td id=#{i + 1},#{o + 1}></td>" %>
+        <% grid_size.times do |o| %>
+          <%= "<td id=#{i + 1}_#{o + 1}></td>" %>
         <% end %>
       </tr>
     <% end %>

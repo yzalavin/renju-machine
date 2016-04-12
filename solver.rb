@@ -1,1 +1,1 @@
-p 'Hello world!'
+require_relative 'solver/game'
