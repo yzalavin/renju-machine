@@ -1,6 +1,20 @@
+var colors = {
+  human: '#9966ff',
+  comp: '2290B5'
+}
+
+function getGridState(){
+}
+
+function tagField(field, color){
+  $(field).css('background', color);
+  $(field).prop('data-tagged', true);
+}
+
 $(function(){
-  $("td#h8").css('background', '#9966ff');
+  tagField('td#h8', colors.human);
   $("td").on('click', function(){
-    $(this).css('background', '#9966ff');
+    tagField(this, colors.human)
+    $.post('play', {el: $(this).attr('id')})
   })
 })
