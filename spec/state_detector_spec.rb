@@ -15,14 +15,20 @@ describe StateDetector do
   }
 
   let(:draws){
-
+    [].tap do |arr|
+      ('a'..'o').each do |ch|
+        15.times do |n|
+          arr << ch + n.to_s
+        end
+      end
+    end
   }
 
   let(:in_process){
     [
       %w(h8),
       %w(h1 h2 h3 h4 h5),
-      %w()
+      %w(g1 g2 g4 g3 g5 g6 g7 g8 g9 g11 g10)
     ]
   }
 
@@ -38,6 +44,14 @@ describe StateDetector do
     it 'detects it', tag: true do
       machine_wins.each do |state|
         expect(StateDetector.new(state).detect).to eq :machine_wins
+      end
+    end
+  end
+
+  context 'when nobody wins yet' do
+    it 'detects it', tag: true do
+      in_process.each do |state|
+        expect(StateDetector.new(state).detect).to eq :in_process
       end
     end
   end
