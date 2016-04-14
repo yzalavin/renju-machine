@@ -1,5 +1,5 @@
-GRID_SIZE = 5
-FIEDLS_TO_WIN = 3
+GRID_SIZE = 15
+FIEDLS_TO_WIN = 5
 
 # 0 - empty, 1 - enemy, 2 - me
 class Game
