@@ -4,7 +4,8 @@ describe StateDetector do
   let(:human_wins) {
     [
       %w(h8 g1 h7 g2 h6 g3 h5 g4 h4),
-      %w(a3 g5 a5 h4 a2 o9 a1 h8 a4)
+      %w(a3 g5 a5 h4 a2 o9 a1 h8 a4),
+      # %w(h8 g5 i8 f6 j8 f8 k8 f9 l8),
 
     ]
   }

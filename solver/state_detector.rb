@@ -13,14 +13,21 @@ class StateDetector
   def detect
     return :in_process if steps.length < 9
     return :draw if steps.length == 225
-    verify_vertical
+    return verify_vertical unless verify_vertical == :in_process
+    :in_process
   end
 
   private
 
   def verify_vertical
+    initialize_vertical_hashes
     fill_vertical_hash
     win_by_vertical?
+  end
+
+  def initialize_vertical_hashes
+    @human_vertical = {}
+    @machine_vertical = {}
   end
 
   def fill_vertical_hash
