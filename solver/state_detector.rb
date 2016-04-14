@@ -37,7 +37,7 @@ class StateDetector
     [human_steps, machine_steps].each_with_index do |arr,i|
       winner = i == 0 ? :human_wins : :machine_wins
       arr.each do |el|
-        %w(up down).each do |drct|
+        %w(right left).each do |drct|
           matched = 1
           while arr.include?(next_element(el, drct))
             el = next_element(el, drct)
@@ -54,12 +54,12 @@ class StateDetector
     char = el[0]
     numb = el[1..-1].to_i
     index = ('a'..'o').to_a.index(char)
-    if drct == 'up'
+    if drct == 'right'
       return nil if char == 'o' || numb == 15
       ('a'..'o').to_a[index + 1] + (numb + 1).to_s
     else
-      return nil if char == 'a' || numb == 1
-      ('a'..'o').to_a[index - 1] + (numb - 1).to_s
+      return nil if char == 'o' || numb == 1
+      ('a'..'o').to_a[index + 1] + (numb - 1).to_s
     end
   end
 
