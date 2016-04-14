@@ -24,6 +24,7 @@ $(function(){
         if (data == 'human_wins') {
           alert('Это победа!');
         } else if (data == 'machine_wins'){
+          tagField($('td#' + data), colors.machine);
           alert('Неудача! Машина сильнее!');
         } else if (data == 'draw'){
           alert('Что ж! Победитель не выявлен.')
