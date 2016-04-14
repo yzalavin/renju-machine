@@ -15,6 +15,7 @@ class StateDetector
     return :draw if steps.length == 225
     return verify_vertical unless verify_vertical == :in_process
     return verify_horizontal unless verify_horizontal == :in_process
+    return verify_diagonal unless verify_diagonal == :in_process
     :in_process
   end
 
@@ -30,6 +31,36 @@ class StateDetector
     initialize_horizontal_hashes
     fill_horizontal_hash
     win_by_horizontal?
+  end
+
+  def verify_diagonal
+    [human_steps, machine_steps].each_with_index do |arr,i|
+      winner = i == 0 ? :human_wins : :machine_wins
+      arr.each do |el|
+        %w(up down).each do |drct|
+          matched = 1
+          while arr.include?(next_element(el, drct))
+            el = next_element(el, drct)
+            matched += 1
+            return winner if matched > 4
+          end
+        end
+      end
+    end
+    :in_process
+  end
+
+  def next_element(el, drct)
+    char = el[0]
+    numb = el[1..-1].to_i
+    index = ('a'..'o').to_a.index(char)
+    if drct == 'up'
+      return nil if char == 'o' || numb == 15
+      ('a'..'o').to_a[index + 1] + (numb + 1).to_s
+    else
+      return nil if char == 'a' || numb == 1
+      ('a'..'o').to_a[index - 1] + (numb - 1).to_s
+    end
   end
 
   def initialize_vertical_hashes
