@@ -5,15 +5,17 @@ describe StateDetector do
     [
       %w(h8 g1 h7 g2 h6 g3 h5 g4 h4),
       %w(a3 g5 a5 h4 a2 o9 a1 h8 a4),
-      # %w(h8 g5 i8 f6 j8 f8 k8 f9 l8),
-
+      %w(h8 g5 i8 f6 j8 f8 k8 f9 l8),
+      %w(h8 g5 g13 f6 e13 f8 f13 f9 i13 k8 h13),
     ]
   }
 
   let(:machine_wins) {
     [
       %w(h8 g1 h7 g2 h6 g3 h5 g4 h13 g5),
-      %w(h8 g10 j3 g6 a2 g7 d5 g8 e4 g9)
+      %w(h8 g10 j3 g6 a2 g7 d5 g8 e4 g9),
+      %w(h8 a1 o2 b1 a4 c1 b5 d1 k8 e1),
+      %w(h8 d13 a2 f13 a3 e13 f4 h13 f5 g13)
     ]
   }
 
