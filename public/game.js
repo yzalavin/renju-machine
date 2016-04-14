@@ -16,7 +16,16 @@ $(function(){
     } else {
       tagField(this, colors.human)
       $.post('step', {el: $(this).attr('id')}, function(data){
-        tagField($('td#' + data), colors.machine);
+        console.log(data);
+        if (data == 'win') {
+          alert('Это победа!');
+        } else if (data == 'loose'){
+          alert('Неудача!');
+        } else if (data == 'draw'){
+          alert('Что ж! Победитель не выявлен.')
+        } else {
+          tagField($('td#' + data), colors.machine);
+        }
       })
     }
   })

@@ -12,4 +12,5 @@ post '/step' do
   next_step = Game.new.next_step
   session[:game].concat([params['el'], next_step])
   next_step
+  # {step: next_step, state: Game.new.state}
 end

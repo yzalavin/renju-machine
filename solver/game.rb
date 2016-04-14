@@ -12,6 +12,10 @@ class Game
     ('a'..'o').to_a.sample + (rand(15) + 1).to_s
   end
 
+  def state
+    'win'
+  end
+
   private
 
   def rewards
