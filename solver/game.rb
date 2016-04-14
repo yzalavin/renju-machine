@@ -3,8 +3,9 @@ FIEDLS_TO_WIN = 5
 
 # 0 - empty, 1 - enemy, 2 - me
 class Game
-  def initialize(params)
-    matrix = []
+  attr_reader :elements
+  def initialize(params = {})
+    @elements = params[:el]
   end
 
   def next_step
