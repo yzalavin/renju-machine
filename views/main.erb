@@ -22,10 +22,10 @@
 
 <div class="container-fluid inner">
   <table class="tableizer-table">
-    <% grid_size.times do |o| %>
+    <% (1..grid_size).to_a.reverse.each do |o| %>
       <tr>
         <% ('a'..'z').to_a.first(grid_size).each do |l| %>
-          <%= "<td id=#{l}#{o + 1}></td>" %>
+          <%= "<td id=#{l}#{o}></td>" %>
         <% end %>
       </tr>
     <% end %>
