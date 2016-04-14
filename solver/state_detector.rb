@@ -28,9 +28,10 @@ class StateDetector
       hash = i == 0 ? human_vertical : machine_vertical
       arr.each do |el|
         char = el[0]
-        numb = el[1].to_i
+        numb = el[1..-1].to_i
         hash[char] = [] unless hash[char]
         hash[char].push(numb)
+        hash[char].sort!
       end
     end
   end

@@ -4,6 +4,7 @@ describe StateDetector do
   let(:human_wins) {
     [
       %w(h8 g1 h7 g2 h6 g3 h5 g4 h4),
+      %w(a3 g5 a5 h4 a2 o9 a1 h8 a4)
 
     ]
   }
@@ -11,6 +12,7 @@ describe StateDetector do
   let(:machine_wins) {
     [
       %w(h8 g1 h7 g2 h6 g3 h5 g4 h13 g5),
+      %w(h8 g10 j3 g6 a2 g7 d5 g8 e4 g9)
     ]
   }
 
