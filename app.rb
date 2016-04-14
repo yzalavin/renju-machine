@@ -4,7 +4,7 @@ require_relative 'solver'
 enable :sessions
 
 get '/' do
-  session[:game] = ['h8']
+  session[:game] = %w(h8)
   erb :main, locals: { grid_size: GRID_SIZE }
 end
 

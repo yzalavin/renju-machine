@@ -5,15 +5,19 @@ var colors = {
 
 function tagField(field, color){
   $(field).css('background', color);
-  // $(field).prop('data-tagged', true);
+  $(field).addClass('tagged');
 }
 
 $(function(){
   tagField('td#h8', colors.human);
   $("td").on('click', function(){
-    tagField(this, colors.human)
-    $.post('step', {el: $(this).attr('id')}, function(data){
-      tagField($('td#' + data), colors.machine);
-    })
+    if ($(this).hasClass('tagged')){
+      alert('Не стоит этого делать');
+    } else {
+      tagField(this, colors.human)
+      $.post('step', {el: $(this).attr('id')}, function(data){
+        tagField($('td#' + data), colors.machine);
+      })
+    }
   })
 })
