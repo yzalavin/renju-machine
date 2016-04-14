@@ -15,22 +15,22 @@ $(function(){
   tagField(tengen, colors.human);
   tagField('td#h9', colors.machine);
   $("td").on('click', function(){
-      if ($(this).hasClass('tagged')){
-        alert('Не стоит этого делать');
-      } else {
-        tagField(this, colors.human)
-        $.post('step', {el: $(this).attr('id')}, function(data){
-          console.log(data);
-          if (data == 'win') {
-            alert('Это победа!');
-          } else if (data == 'loose'){
-            alert('Неудача!');
-          } else if (data == 'draw'){
-            alert('Что ж! Победитель не выявлен.')
-          } else {
-            tagField($('td#' + data), colors.machine);
-          }
-        })
-      }
+    if ($(this).hasClass('tagged')){
+      alert('Не стоит этого делать');
+    } else {
+      tagField(this, colors.human)
+      $.post('step', {el: $(this).attr('id')}, function(data){
+        console.log(data);
+        if (data == 'human_wins') {
+          alert('Это победа!');
+        } else if (data == 'machine_wins'){
+          alert('Неудача! Машина сильнее!');
+        } else if (data == 'draw'){
+          alert('Что ж! Победитель не выявлен.')
+        } else {
+          tagField($('td#' + data), colors.machine);
+        }
+      })
+    }
     })
 })
