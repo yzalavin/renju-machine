@@ -9,7 +9,9 @@ describe StateDetector do
   }
 
   let(:machine_wins) {
-
+    [
+      %w(h8 g1 h7 g2 h6 g3 h5 g4 h13 g5),
+    ]
   }
 
   let(:draws){
@@ -28,6 +30,14 @@ describe StateDetector do
     it 'detects it' do
       human_wins.each do |state|
         expect(StateDetector.new(state).detect).to eq :human_wins
+      end
+    end
+  end
+
+  context 'when machine wins' do
+    it 'detects it', tag: true do
+      machine_wins.each do |state|
+        expect(StateDetector.new(state).detect).to eq :machine_wins
       end
     end
   end
