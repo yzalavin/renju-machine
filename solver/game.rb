@@ -7,6 +7,10 @@ class Game
     matrix = []
   end
 
+  def next_step
+    ('a'..'o').to_a.sample + (rand(15) + 1).to_s
+  end
+
   private
 
   def rewards
