@@ -5,6 +5,7 @@ GEM
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    redis (3.2.2)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -28,6 +29,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  redis (~> 3.2)
   rspec
   sinatra
 
