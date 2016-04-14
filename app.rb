@@ -9,11 +9,8 @@ get '/' do
 end
 
 post '/step' do
-  p '=================================='
-  p session[:game]
   next_step = Game.new.next_step
   session[:game].concat([params['el'], next_step])
-  p session[:game]
   state = StateDetector.new(session[:game]).detect
   state == :in_process ? next_step : state.to_s
 end
