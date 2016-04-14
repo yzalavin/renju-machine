@@ -1,8 +1,34 @@
 require_relative '../solver/state_detector'
 
 describe StateDetector do
-  it 'can be initialized with an array' do
-    sd = StateDetector.new(%w'1 2 3')
-    expect(sd.steps).to eq %w(1 2 3)
+  let(:human_wins) {
+    [
+      %w(h8 g1 h7 g2 h6 g3 h5 g4 h4),
+
+    ]
+  }
+
+  let(:machine_wins) {
+
+  }
+
+  let(:draws){
+
+  }
+
+  let(:in_process){
+    [
+      %w(h8),
+      %w(h1 h2 h3 h4 h5),
+      %w()
+    ]
+  }
+
+  context 'when human wins' do
+    it 'detects it' do
+      human_wins.each do |state|
+        expect(StateDetector.new(state).detect).to eq :human_wins
+      end
+    end
   end
 end
