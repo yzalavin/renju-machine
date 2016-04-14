@@ -12,6 +12,7 @@ class StateDetector
 
   def detect
     return :in_process if steps.length < 9
+    return :draw if steps.length == 225
     verify_vertical
   end
 
