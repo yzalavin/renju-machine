@@ -23,14 +23,13 @@ class NextStep
   def collect_results
     hash = { machine: {}, human: {} }
     [machine_steps, human_steps].each_with_index do |arr, index|
-      opponent = index == 0 ? human_steps : machine_steps
       hash_index = index == 0 ? :machine : :human
       arr.each do |step|
         [%w(up down), %w(left right), ['left up', 'right down'], ['left down', 'right up']].each do |dirs|
           result = [step]
           dirs.each do |dir|
             el = closest_element(step, dir)
-            while machine_steps.include?(el)
+            while arr.include?(el)
               result.push(el)
               el = closest_element(el, dir)
             end
