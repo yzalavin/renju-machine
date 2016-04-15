@@ -9,7 +9,7 @@ describe StateDetector do
       %w(h8 g5 g13 f6 e13 f8 f13 f9 i13 k8 h13),
       %w(h8 g5 i9 g6 j10 k13 k11 m9 l12),
       %w(h8 k5 g7 g6 i9 o9 e5 e3 f6),
-      %w(h8 k5 a15 g6 b14 o9 c13 e3 d12 j5 e11)
+      %w(h8 k5 a15 g6 b14 o9 c13 e3 d12 j5 e11),
     ]
   }
 
