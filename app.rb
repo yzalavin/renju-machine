@@ -10,7 +10,7 @@ end
 
 post '/step' do
   session[:game].push(params['el'])
-  next_step = Game.new.next_step(session[:game], params['el'])
+  next_step = Game.new(session[:game]).next_step
   session[:game].push(next_step)
   state = StateDetector.new(session[:game]).detect
   state == :in_process ? next_step : state.to_s
