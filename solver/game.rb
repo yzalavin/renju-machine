@@ -1,4 +1,5 @@
 require 'redis'
+require_relative 'next_step'
 
 GRID_SIZE = 15
 FIEDLS_TO_WIN = 5
@@ -13,7 +14,9 @@ class Game
   end
 
   def next_step
-    return redis_step unless redis_step.nil?
+    # return redis_step unless redis_step.nil?
+    cover = NextStep.new(state).choose
+    return cover unless cover.nil? || state.include?(cover)
     random_close_step
   end
 

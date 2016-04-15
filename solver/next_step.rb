@@ -8,7 +8,7 @@ class NextStep
   end
 
   def choose
-    p results = collect_results
+    results = collect_results
     return results[:machine]['4'] if results[:machine]['4']
     return results[:human]['4'] if results[:human]['4']
     return results[:machine]['3'] if results[:machine]['3']
