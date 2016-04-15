@@ -11,7 +11,8 @@ end
 post '/step' do
   session[:game].push(params['el'])
   next_step = Game.new(session[:game]).next_step
-  session[:game].push(next_step)
   state = StateDetector.new(session[:game]).detect
+  session[:game].push(next_step)
+  state = StateDetector.new(session[:game]).detect if state == :in_process
   state == :in_process ? next_step : "#{state},#{next_step}"
 end
