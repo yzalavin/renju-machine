@@ -20,13 +20,12 @@ $(function(){
     } else {
       tagField(this, colors.human)
       $.post('step', {el: $(this).attr('id')}, function(data){
-        console.log(data);
-        if (data == 'human_wins') {
+        if (data.split(',')[0] == 'human_wins') {
           alert('Это победа!');
-        } else if (data == 'machine_wins'){
-          tagField($('td#' + data), colors.machine);
+        } else if (data.split(',')[0] == 'machine_wins'){
+          tagField($("td#" + data.split(",")[1]), colors.machine);
           alert('Неудача! Машина сильнее!');
-        } else if (data == 'draw'){
+        } else if (data.split(',')[0] == 'draw'){
           alert('Что ж! Победитель не выявлен.')
         } else {
           tagField($('td#' + data), colors.machine);

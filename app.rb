@@ -13,5 +13,5 @@ post '/step' do
   next_step = Game.new(session[:game]).next_step
   session[:game].push(next_step)
   state = StateDetector.new(session[:game]).detect
-  state == :in_process ? next_step : state.to_s
+  state == :in_process ? next_step : "#{state},#{next_step}"
 end
