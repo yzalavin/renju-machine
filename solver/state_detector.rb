@@ -1,8 +1,11 @@
+require 'redis'
+
 class StateDetector
-  attr_reader :steps, :human_steps, :machine_steps
+  attr_reader :steps, :human_steps, :machine_steps, :redis
   attr_accessor :human_vertical, :machine_vertical, :human_horizontal, :machine_horizontal
 
   def initialize(steps)
+    @redis = Redis.new
     @steps = steps
     @human_steps = steps.select.with_index { |s,i| i.even? }.sort
     @machine_steps = steps.select.with_index { |s,i| i.odd? }.sort
@@ -12,10 +15,16 @@ class StateDetector
 
   def detect
     return :in_process if steps.length < 9
-    return :draw if steps.length == 225
-    return verify_vertical unless verify_vertical == :in_process
-    return verify_horizontal unless verify_horizontal == :in_process
-    return verify_diagonal unless verify_diagonal == :in_process
+    draw = steps.length == 225 ? :draw : :in_process
+    v = verify_vertical
+    h = verify_horizontal
+    d = verify_diagonal
+    [draw, v, h, d].each do |s|
+      unless s == :in_process
+        redis.rpush('games', steps.join(''))
+        return s
+      end
+    end
     :in_process
   end
 
