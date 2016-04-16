@@ -16,8 +16,8 @@ class Game
   def next_step
     # return redis_step unless redis_step.nil?
     cover = NextStep.new(state).choose
-    return cover unless cover.nil? || state.include?(cover)
-    random_close_step
+    # return cover unless cover.nil? || state.include?(cover)
+    # random_close_step
   end
 
   private
